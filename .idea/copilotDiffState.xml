@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/CHANGELOG.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/CHANGELOG.md" />
+              <option name="updatedContent" value="# Changelog&#10;&#10;All notable changes to the Social project will be documented in this file.&#10;&#10;The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),&#10;and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).&#10;&#10;## [v0.1.0] - 2025-09-01&#10;&#10;### Added&#10;- Initial project setup with Go module `social.robertgleason.ca`&#10;- Go 1.25.0 configuration&#10;- Basic project structure with main.go entry point&#10;- Git repository initialization with comprehensive .gitignore&#10;- JetBrains IDE configuration support&#10;- Professional documentation structure (README.md, CHANGELOG.md)&#10;&#10;### Changed&#10;- N/A&#10;&#10;### Fixed&#10;- N/A&#10;&#10;### Removed&#10;- N/A&#10;&#10;---&#10;&#10;[v0.1.0]: Initial release" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/README.md" />
+              <option name="updatedContent" value="# Social&#10;&#10;A modern social networking application built with Go, designed for scalable and efficient social interactions.&#10;&#10;## Version&#10;**Current Version:** v0.1.0&#10;&#10;## Features&#10;- **Project Initialization**: Basic Go module setup and project structure&#10;- **Development Environment**: Configured with proper Git ignore rules and IDE support&#10;&#10;## Installation&#10;&#10;### Prerequisites&#10;- Go 1.25.0 or higher&#10;- Git&#10;&#10;### Setup&#10;1. Clone the repository:&#10;   ```bash&#10;   git clone &lt;repository-url&gt;&#10;   cd social&#10;   ```&#10;&#10;2. Install dependencies:&#10;   ```bash&#10;   go mod tidy&#10;   ```&#10;&#10;3. Run the application:&#10;   ```bash&#10;   go run main.go&#10;   ```&#10;&#10;## Usage&#10;*Coming soon - application functionality is currently in development.*&#10;&#10;## Tech Stack&#10;- **Backend**: Go 1.25.0&#10;- **Module**: social.robertgleason.ca&#10;- **Development**: JetBrains IDE support configured&#10;&#10;## Roadmap&#10;- [ ] Core application structure and routing&#10;- [ ] User authentication and authorization&#10;- [ ] Social features (posts, comments, likes)&#10;- [ ] Real-time messaging&#10;- [ ] API documentation&#10;- [ ] Database integration&#10;- [ ] Frontend interface&#10;- [ ] Deployment configuration&#10;&#10;## Contributing&#10;Detailed contributing guidelines will be available in the `/docs` folder as the project develops.&#10;&#10;## License&#10;*License information to be determined.*&#10;&#10;---&#10;*Last updated: September 1, 2025*" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/docs/project-structure.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/docs/project-structure.md" />
+              <option name="updatedContent" value="# Project Structure&#10;&#10;This document outlines the structure and organization of the Social application.&#10;&#10;## Directory Structure&#10;&#10;```&#10;social/&#10;├── main.go              # Application entry point&#10;├── go.mod               # Go module configuration&#10;├── .gitignore           # Git ignore rules&#10;├── README.md            # Project overview and setup instructions&#10;├── CHANGELOG.md         # Version history and changes&#10;└── docs/                # Project documentation&#10;    ├── project-structure.md  # This file&#10;    ├── development.md        # Development setup and guidelines&#10;    └── api.md               # API documentation (coming soon)&#10;```&#10;&#10;## File Responsibilities&#10;&#10;### Root Level Files&#10;&#10;- **main.go**: The main entry point for the Go application. Currently empty, ready for initial application setup.&#10;- **go.mod**: Defines the Go module as `social.robertgleason.ca` with Go 1.25.0 requirement.&#10;- **.gitignore**: Comprehensive ignore rules for JetBrains IDEs and common Go build artifacts.&#10;&#10;### Documentation (`/docs`)&#10;&#10;- **project-structure.md**: This file - explains the project organization.&#10;- **development.md**: Development setup, coding standards, and contribution guidelines.&#10;- **api.md**: Will contain API endpoint documentation as the project develops.&#10;&#10;## Module Information&#10;&#10;- **Module Name**: `social.robertgleason.ca`&#10;- **Go Version**: 1.25.0&#10;- **Type**: Social networking application&#10;&#10;## Development Notes&#10;&#10;The project is currently in initial setup phase. The main.go file is ready for the first implementation of core application structure, routing, and basic server setup.&#10;&#10;---&#10;*Last updated: September 1, 2025 - v0.1.0*" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
