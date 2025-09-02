@@ -5,6 +5,25 @@ All notable changes to the Social project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.2.0] - 2025-09-01
+
+### Added
+- HTTP server application under `cmd/api` using chi v5 router
+- Middleware stack: RequestID, RealIP, Logger, Recoverer, Timeout (60s)
+- Health check endpoint: `GET /v1/health` returns `200 OK` with body `OK`
+- Environment helpers in `internal/env` for string/int lookup
+- Development tooling scaffold: `.air.toml` and `.envrc`
+
+### Changed
+- Run instructions updated to `go run ./cmd/api`
+- Documentation refreshed: README, Development guide, Project structure
+
+### Fixed
+- Clarified environment variable usage for `ADDR` (defaults to `:8080`)
+
+### Removed
+- N/A
+
 ## [v0.1.0] - 2025-09-01
 
 ### Added
@@ -26,4 +45,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[v0.2.0]: Added core API server, middleware, health endpoint, and env helpers
 [v0.1.0]: Initial release

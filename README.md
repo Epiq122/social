@@ -3,17 +3,21 @@
 A modern social networking application built with Go, designed for scalable and efficient social interactions.
 
 ## Version
-**Current Version:** v0.1.0
+**Current Version:** v0.2.0
 
 ## Features
-- **Project Initialization**: Basic Go module setup and project structure
-- **Development Environment**: Configured with proper Git ignore rules and IDE support
+- Core HTTP server with structured routing
+- Health check endpoint: `GET /v1/health`
+- Request middleware: request ID, real IP, logging, recoverer, timeouts
+- Environment-driven configuration (ADDR with default `:8080`)
+- Development tooling scaffold (Air config present, `.envrc` for local env)
 
 ## Installation
 
 ### Prerequisites
 - Go 1.25.0 or higher
 - Git
+- Optional: Air (live reload) and direnv for environment management
 
 ### Setup
 1. Clone the repository:
@@ -27,34 +31,63 @@ A modern social networking application built with Go, designed for scalable and 
    go mod tidy
    ```
 
-3. Run the application:
+3. Configure environment (optional):
+   - By default the server listens on `:8080`.
+   - To override, set `ADDR`, e.g.:
+     ```bash
+     export ADDR=":1000"   # bash/zsh
+     ```
+   - If you use direnv, add/update `.envrc` accordingly then run `direnv allow`.
+
+4. Run the application:
    ```bash
-   go run main.go
+   # Run without hot reload
+   go run ./cmd/api
    ```
 
+5. Run with hot reload (optional):
+   ```bash
+   # Install Air if needed
+   go install github.com/air-verse/air@latest
+
+   # From project root
+   air
+   ```
+   Notes:
+   - Air builds `./cmd/api` into `./bin/main` as configured in `.air.toml`.
+   - By default, the app listens on `ADDR` (default `:8080`).
+
 ## Usage
-*Coming soon - application functionality is currently in development.*
+- Health check:
+  ```bash
+  curl -i http://localhost:8080/v1/health
+  ```
+  Expected response:
+  ```
+  HTTP/1.1 200 OK
+  ...
+  OK
+  ```
 
 ## Tech Stack
-- **Backend**: Go 1.25.0
-- **Module**: social.robertgleason.ca
-- **Development**: JetBrains IDE support configured
+- Backend: Go 1.25.0
+- Web: chi v5 (router and middleware)
+- Module: `social.robertgleason.ca`
+- Dev: Air (hot reload), direnv (env), JetBrains IDE support
 
 ## Roadmap
-- [ ] Core application structure and routing
+- [x] Core application structure and routing
+- [x] Health endpoint and base middleware
 - [ ] User authentication and authorization
 - [ ] Social features (posts, comments, likes)
 - [ ] Real-time messaging
-- [ ] API documentation
+- [ ] API documentation expansion
 - [ ] Database integration
 - [ ] Frontend interface
 - [ ] Deployment configuration
 
-## Contributing
-Detailed contributing guidelines will be available in the `/docs` folder as the project develops.
-
 ## License
-*License information to be determined.*
+License to be determined. If you plan to contribute or use this code, please check back for a LICENSE file or reach out to the maintainers.
 
 ---
-*Last updated: September 1, 2025*
+Last updated: September 1, 2025

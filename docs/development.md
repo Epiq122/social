@@ -7,87 +7,115 @@ This document provides setup instructions and guidelines for developing the Soci
 ### Prerequisites
 - Go 1.25.0 or higher
 - Git
-- A code editor (JetBrains GoLand/IntelliJ IDEA recommended - already configured)
+- Optional: direnv (for environment variables), Air (for hot reload)
 
 ### Environment Setup
 
-1. **Clone and Navigate**
+1. Clone and navigate
    ```bash
    git clone <repository-url>
    cd social
    ```
 
-2. **Verify Go Installation**
+2. Verify Go installation
    ```bash
    go version
-   # Should output: go version go1.25.0 or higher
+   # Expect: go version go1.25.0 or higher
    ```
 
-3. **Initialize Dependencies**
+3. Install dependencies
    ```bash
    go mod tidy
    ```
 
-4. **Run the Application**
+4. Configure environment (optional)
+   - Default listen address: `:8080`
+   - Override via environment variable:
+     ```bash
+     export ADDR=":1000"
+     ```
+   - If using direnv, add to `.envrc` then run `direnv allow`.
+
+5. Run the application
    ```bash
-   go run main.go
+   # From project root
+   go run ./cmd/api
    ```
+
+6. Optional: Hot reload with Air
+   ```bash
+   # Install once
+   go install github.com/air-verse/air@latest
+
+   # Start watcher (from project root)
+   air
+   ```
+   Notes:
+   - Air builds `./cmd/api` to `./bin/main` using `.air.toml`.
+   - Proxy is disabled by default; access the app on `ADDR` (default `:8080`).
+
+## Verifying the Server
+
+- Health check endpoint:
+  ```bash
+  curl -i http://localhost:8080/v1/health
+  ```
+  Expected:
+  ```
+  HTTP/1.1 200 OK
+  ...
+  OK
+  ```
 
 ## Project Configuration
 
-### Go Module
-- **Module Path**: `social.robertgleason.ca`
-- **Go Version**: 1.25.0
-- **Dependencies**: None currently (will be added as features develop)
-
-### IDE Configuration
-The project includes JetBrains IDE configuration in the `.idea/` folder, providing:
-- Code formatting standards
-- Go-specific settings
-- Debug configurations (to be added)
+- Module path: `social.robertgleason.ca`
+- Web framework: chi v5
+- Middleware: RequestID, RealIP, Logger, Recoverer, Timeout(60s)
+- Env helpers: `internal/env` (string/int lookups with fallbacks)
 
 ## Development Workflow
 
-### Branch Strategy
-*To be defined based on team preferences*
+- Code formatting: `gofmt` (enforced by IDE/CI later)
+- Logging: Use standard library `log` for now
+- Routing: Add routes under `/v1` in `cmd/api/api.go`
+- Handlers: Add new handler methods on `application` type in `cmd/api`
 
-### Code Standards
-- Follow standard Go conventions (`gofmt`, `golint`)
-- Use meaningful variable and function names
-- Include comprehensive comments for public APIs
-- Write unit tests for all core functionality
+## Testing
 
-### Testing
 ```bash
-# Run tests
+# Run all tests
 go test ./...
 
-# Run tests with coverage
+# With coverage
 go test -cover ./...
 ```
 
-### Building
-```bash
-# Build for current platform
-go build -o social main.go
+## Building
 
-# Cross-platform builds (examples)
-GOOS=linux GOARCH=amd64 go build -o social-linux main.go
-GOOS=windows GOARCH=amd64 go build -o social-windows.exe main.go
+```bash
+# Build API
+go build -o bin/main ./cmd/api
+
+# Example cross-compilation
+GOOS=linux GOARCH=amd64 go build -o bin/main-linux ./cmd/api
+GOOS=windows GOARCH=amd64 go build -o bin/main-windows.exe ./cmd/api
 ```
 
-## Next Development Steps
+## Troubleshooting
 
-1. Implement basic HTTP server in `main.go`
-2. Set up routing structure
-3. Define core data models
-4. Implement authentication system
-5. Add database layer
-6. Create API endpoints
+- Port already in use
+  - Change port: `export ADDR=":1000"`
+  - Or kill the process holding the port: `lsof -i :8080`
+- Env variable not applied
+  - Confirm shell exported variable or `direnv reload`
+- Air not rebuilding
+  - Ensure Air is installed and `.air.toml` exists at project root
 
 ## Deployment
 
-*Deployment instructions will be added as the application develops.*
+- Minimal binary deploy available via `go build` output in `bin/`
+- Add a process manager or containerize (Dockerfile planned in roadmap)
 
 ---
-*Last updated: September 1, 2025 - v0.1.0*
+Last updated: September 1, 2025 - v0.2.0
