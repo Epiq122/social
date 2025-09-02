@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/docs/api.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/docs/api.md" />
+              <option name="updatedContent" value="# API Documentation&#10;&#10;This document describes the currently available API endpoints for the Social application.&#10;&#10;Base path: /v1&#10;&#10;- Health Check&#10;  - Method: GET&#10;  - Path: /v1/health&#10;  - Description: Liveness/readiness probe; returns 200 OK if the service is accepting requests.&#10;  - Request&#10;    - Headers: none required&#10;    - Body: none&#10;  - Response&#10;    - Status: 200 OK&#10;    - Headers: Content-Type: text/plain; charset=utf-8&#10;    - Body: OK&#10;  - cURL example&#10;    ```bash&#10;    curl -i http://localhost:8080/v1/health&#10;    ```&#10;&#10;Notes&#10;- More endpoints will be added under /v1 as features are implemented.&#10;- The service listens on the address defined by the ADDR environment variable (default :8080).&#10;&#10;---&#10;Last updated: September 1, 2025 - v0.2.0&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

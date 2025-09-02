@@ -103,7 +103,8 @@ go.work.sum
 
 # env file
 .env
-
+.envrc
+.env.*.local
 ### macOS template
 # General
 .DS_Store
